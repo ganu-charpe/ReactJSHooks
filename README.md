@@ -73,7 +73,6 @@ In other words, Hooks are functions that make Functional components work like Cl
           }}
         >
           <h2>Current Theme: {theme}</h2>
-    
           <select
             value={theme}
             onChange={(e) => setTheme(e.target.value)}
@@ -85,7 +84,6 @@ In other words, Hooks are functions that make Functional components work like Cl
         </div>
           );
         }
-        
         export default App;
   
 5. useRef - useRef(initialvalue)
