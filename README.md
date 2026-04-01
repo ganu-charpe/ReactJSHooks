@@ -119,3 +119,11 @@ In other words, Hooks are functions that make Functional components work like Cl
     custom hooks are basically a reuseable function.
     In simple terms, Custom hooks are your own hooks that you create for your own use.
     And you can use them multiple times in your project.
+
+11. useImperativeHandle
+12. useDebugValue
+13. useId
+14. useTransition
+15. useDeferredValue
+16. useSyncExternalStore
+17. useInsertionEffect
