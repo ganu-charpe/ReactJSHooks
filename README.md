@@ -44,40 +44,50 @@ In other words, Hooks are functions that make Functional components work like Cl
     Example ---
    import React, { createContext, useContext, useState } from "react";
 
-const ThemeContext = createContext();
+    const ThemeContext = createContext();
 
-function App() {
-  const [theme, setTheme] = useState("light");
+    function App() {
+      const [theme, setTheme] = useState("light");
+    
+      return (
+        <ThemeContext.Provider value={{ theme, setTheme }}>
+          <Toolbar />
+        </ThemeContext.Provider>
+      );
+    }
 
-  return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
-      <Toolbar />
-    </ThemeContext.Provider>
-  );
-}
+    function Toolbar() {
+      return <ThemeDropdown />;
+    }
 
-function Toolbar() {
-  return <Button />;
-}
-
-function Button() {
-  const { theme, setTheme } = useContext(ThemeContext);
-
-  return (
-    <button
-      style={{
-        background: theme === "light" ? "#fff" : "#333",
-        color: theme === "light" ? "#000" : "#fff",
-      }}
-      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-    >
-      Toggle Theme
-    </button>
-  );
-}
-
-export default App;
-
+    function ThemeDropdown() {
+      const { theme, setTheme } = useContext(ThemeContext);
+    
+      return (
+        <div
+          style={{
+            background: theme === "light" ? "#fff" : "#333",
+            color: theme === "light" ? "#000" : "#fff",
+            padding: "20px",
+            textAlign: "center",
+          }}
+        >
+          <h2>Current Theme: {theme}</h2>
+    
+          <select
+            value={theme}
+            onChange={(e) => setTheme(e.target.value)}
+            style={{ padding: "8px", fontSize: "16px" }}
+          >
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+        </div>
+          );
+        }
+        
+        export default App;
+  
 5. useRef - useRef(initialvalue)
     useRef allows us to access DOM elements.
     For creating mutable variables which will not re-render the component.
